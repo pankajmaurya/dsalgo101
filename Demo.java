@@ -17,6 +17,12 @@ public class Demo {
 
 		p.play();
 
+		// TODO: Implement a method called reverse on the playlist
+		System.out.println("[Reversing the playlist]");
+		p.reverse();
+
+		p.play();
+
 	}
 
 	private static Song getSong(String title) {

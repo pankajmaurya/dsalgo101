@@ -34,4 +34,7 @@ class PlayList {
 			cur = cur.next;
 		}
 	}
+
+	public void reverse() {
+	}
 }
