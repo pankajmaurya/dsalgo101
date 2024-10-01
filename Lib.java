@@ -35,6 +35,16 @@ class PlayList {
 		}
 	}
 
+	public void add(Song s) {
+		// Traverse the list of songs
+		Node cur = head;
+		while (cur.next != null) {
+			cur = cur.next;
+		}
+		cur.next = new Node();
+		cur.next.item = s;
+	}
+
 	public void reverse() {
 	}
 

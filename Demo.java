@@ -19,6 +19,11 @@ public class Demo {
 
 		// TODO: Add the song1 after last song 5 times
 		System.out.println("\t[Adding first song to end of playlist 5 times]");
+		p.add(song1);
+		p.add(song1);
+		p.add(song1);
+		p.add(song1);
+		p.add(song1);
 		p.play();
 		
 		// TODO: Implement a method called reverse on the playlist
