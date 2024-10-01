@@ -35,6 +35,9 @@ class PlayList {
 		}
 	}
 
+	public void add(Song s) {
+	}
+
 	public void reverse() {
 	}
 
