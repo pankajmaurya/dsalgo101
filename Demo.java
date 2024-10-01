@@ -21,12 +21,7 @@ public class Demo {
 		System.out.println("\t[Adding first song to end of playlist 5 times]");
 		p.play();
 		
-		// TODO: Implement a method called reverse on the playlist
-		System.out.println("\t[Reversing the playlist]");
-		p.reverse();
-		p.play();
-
-
+	
 		// TODO: delete the song "Soul Sacrifice"
 		System.out.println("\t[Deleting song - Soul Sacrifice]");
 		p.delete("Soul Sacrifice");
@@ -42,6 +37,11 @@ public class Demo {
 		System.out.println("\t[Adding song - Soul Sacrifice]");
 		p.play();
 		p2.play();
+	
+		// TODO: Implement a method called reverse on the playlist
+		System.out.println("\t[Reversing the playlist]");
+		p.reverse();
+		p.play();
 
 		// TODO: Get a clone of the playlist p which is a circular linked list.
 		System.out.println("\t[Cloning the playlist as a circular playlist]");
