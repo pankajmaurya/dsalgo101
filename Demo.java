@@ -15,6 +15,8 @@ public class Demo {
 		p.head.next.next = new Node();
 		p.head.next.next.item = getSong("Oye Como Va");
 
+		p.tail = p.head.next.next;
+
 		p.play();
 
 		System.out.println("\t[Adding first song to end of playlist 5 times]");

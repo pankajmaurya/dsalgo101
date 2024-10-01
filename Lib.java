@@ -24,6 +24,7 @@ class Song {
 
 class PlayList {
 	Node head;
+	Node tail;
 	public void play() {
 		System.out.println("Staring to play songs.");
 		int limit = 20;
@@ -49,18 +50,25 @@ class PlayList {
 			cur = new Node();
 			cur.item = s;
 			head = cur;
+			tail = cur;
 			return;
 		}
-		while (cur.next != null) {
-			cur = cur.next;
-		}
-		cur.next = new Node();
-		cur.next.item = s;
+
+		tail.next = new Node();
+		tail.next.item = s;
+		tail = tail.next;
+
+//		while (cur.next != null) {
+//			cur = cur.next;
+//		}
+//		cur.next = new Node();
+//		cur.next.item = s;
 	}
 
 	public void reverse() {
 		Node first, second, third;
 		first = head;
+		tail = first;
 
 		if (first == null) return;
 		second = first.next;
@@ -83,40 +91,74 @@ class PlayList {
 	}
 
 	public void delete(String title) {
-		// Traverse the list of songs
+
+		if (head == null) return;
+
+		if (head.item.title.equalsIgnoreCase(title)) {
+			head = head.next;
+
+			if (tail.item.title.equalsIgnoreCase(title)){
+				tail = null;
+			}
+			return;
+		}
 		Node cur = head;
 		Node prev = cur;
 		while (cur.next != null) {
 			cur = cur.next;
-			if (cur != null && cur.item.title.equalsIgnoreCase(title)) prev.next = cur.next;
-
+			if (cur != null && cur.item.title.equalsIgnoreCase(title)) {
+				prev.next = cur.next;
+				if (cur == tail) {
+					tail = prev;
+				}
+			}
 			prev = cur;
 		}
 	}
 
 	public PlayList clone() {
 		PlayList p2 = new PlayList();
+		if (head != null) {
+			p2.head = new Node();
+			p2.head.item = head.item;
+		}
 
-		// Traverse the list of songs
-		Node cur = head;
+		Node cur = head.next;
+		Node p2cur = p2.head;
 		while (cur != null) {
-			p2.add(cur.item);
+			p2cur.next = new Node();
+			p2cur.next.item = cur.item;
+
+			if (cur.next == null) {
+				p2.tail = p2cur;
+			}
 			cur = cur.next;
+			p2cur = p2cur.next;
 		}
 		return p2;
 	}
 
 	public PlayList getCircularClone() {
-		PlayList cloned = clone();
-		Node cur = head;
-		while (cur != null) {
-			cloned.add(cur.item);
-			cur = cur.next;
+		PlayList p2 = new PlayList();
+		if (head != null) {
+			p2.head = new Node();
+			p2.head.item = head.item;
 		}
 
-		Node t = cloned.head;
-		while (t.next != null) t = t.next;
-		t.next = cloned.head;
-		return cloned;
+		Node cur = head.next;
+		Node p2cur = p2.head;
+		while (cur != null) {
+			p2cur.next = new Node();
+			p2cur.next.item = cur.item;
+
+			if (cur.next == null) {
+				p2.tail = p2cur;
+				p2.tail.next = p2.head;
+				break;
+			}
+			cur = cur.next;
+			p2cur = p2cur.next;
+		}
+		return p2;
 	}
 }
