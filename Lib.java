@@ -37,4 +37,15 @@ class PlayList {
 
 	public void reverse() {
 	}
+
+	public void delete(String title) {
+	}
+
+	public PlayList clone() {
+		return this;
+	}
+
+	public PlayList getCircularClone() {
+		return this;
+	}
 }
