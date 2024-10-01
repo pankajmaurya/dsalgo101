@@ -25,24 +25,21 @@ public class Demo {
 		p.add(song1);
 		p.play();
 		
-		
-		// TODO: delete the song "Soul Sacrifice"
 		System.out.println("\t[Deleting song - Soul Sacrifice]");
 		p.delete("Soul Sacrifice");
 		p.play();
 
-
-		// TODO: Clone the Playlist
 		System.out.println("\t[Cloning the playlist]");
 		PlayList p2 = p.clone();
 		p2.play();
 
-		// TODO: Add the song Soul Sacrifice to p
 		System.out.println("\t[Adding song - Soul Sacrifice]");
+		p.add(getSong("Soul Sacrifice"));
 		p.play();
+
+		System.out.println("\t[Playing the clone]");
 		p2.play();
 		
-		// TODO: Implement a method called reverse on the playlist
 		System.out.println("\t[Reversing the playlist]");
 		p.reverse();
 		p.play();
