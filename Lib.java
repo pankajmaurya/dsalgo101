@@ -8,8 +8,7 @@
   
    Linked list
  - linearly organized data structure which can alter in size dynamically. 
- - Node 
-
+ - Node
 */
 
 class Node {

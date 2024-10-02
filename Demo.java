@@ -1,7 +1,31 @@
+import java.util.Random;
+
 public class Demo {
 
-	public static void main(String[] args) {
-		PlayList p = new PlayList();
+	public static void automatedTest(PlayList p) {
+
+		long start = System.currentTimeMillis();
+		int workloadCount = 10000;
+		for (int i = 1; i <= workloadCount; i++) {
+			p.add(getSong("Song number " + i));
+		}
+
+		// delete some
+		Random random = new Random();
+		for (int i = 1; i <= workloadCount; i++) {
+			if (random.nextBoolean()) {
+				p.delete("Song number " + i);
+			}
+		}
+
+		p.reverse();
+
+		p.play();
+
+		System.out.println("time taken = " + (System.currentTimeMillis() - start));
+	}
+
+	public static void manualTest(PlayList p) {
 		p.head = new Node();
 		Song song1 = new Song();
 		song1.title = "Black Magic Woman";
@@ -11,7 +35,7 @@ public class Demo {
 		p.head.next = new Node();
 		p.head.next.item = getSong("Soul Sacrifice");
 
-		
+
 		p.head.next.next = new Node();
 		p.head.next.next.item = getSong("Oye Como Va");
 
@@ -26,7 +50,7 @@ public class Demo {
 		p.add(song1);
 		p.add(song1);
 		p.play();
-		
+
 		System.out.println("\t[Deleting song - Soul Sacrifice]");
 		p.delete("Soul Sacrifice");
 		p.play();
@@ -41,7 +65,7 @@ public class Demo {
 
 		System.out.println("\t[Playing the clone]");
 		p2.play();
-		
+
 		System.out.println("\t[Reversing the playlist]");
 		p.reverse();
 		p.play();
@@ -52,7 +76,11 @@ public class Demo {
 		PlayList p3 = p.getCircularClone();
 		// Playing P3 would never terminate.
 		p3.play();
+	}
 
+	public static void main(String[] args) {
+		PlayList p = new PlayList();
+		automatedTest(p);
 	}
 
 	private static Song getSong(String title) {
