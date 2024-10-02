@@ -16,6 +16,7 @@ Instructions
 ============
 
 ```
-javac Lib.java Demo.java
+javac *.java
 java Demo
+java TicketBookingSystemDemo
 ```
