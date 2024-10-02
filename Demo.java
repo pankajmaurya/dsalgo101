@@ -17,6 +17,17 @@ public class Demo {
 
 		p.play();
 
+
+		NewsStack newsStack = new NewsStack();
+		newsStack.push(Newspaper.printTimes("End of the war", "May 8, 1945"));
+		newsStack.push(Newspaper.printTimes("India gets freedom", "August 15, 1947"));
+		newsStack.push(Newspaper.printTimes("Man lands on the moon", "July 20, 1969"));
+
+		System.out.println(newsStack.peek());
+		newsStack.pop();
+		System.out.println(newsStack.pop());
+		System.out.println(newsStack.pop());
+		System.out.println(newsStack.pop());
 	}
 
 	private static Song getSong(String title) {
