@@ -35,3 +35,23 @@ class PlayList {
 		}
 	}
 }
+// Practice problems: https://leetcode.com/problem-list/linked-list/
+/*
+A linked list is great for appending items or growing dynamically.
+However, searching an element is not performant.
+Deleting an element if we have to find it is hence not performant as well.
+Also sorting a linked list is tedious.
+
+We explore an advanced data structure called a SkipList
+A skiplist is a data structure that takes O(log(n)) time to add, erase and search.
+It uses multiple linked lists and a concept of levels.
+It keeps the items sorted, making searching, insertion and deletion as O(log(n))
+*/
+
+interface Skiplist {
+	boolean search(int target);
+
+	void add(int num);
+
+	boolean erase(int num);
+};
