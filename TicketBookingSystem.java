@@ -100,6 +100,7 @@ class SimpleBookingSystem implements BookingSystem {
 
         // We could not book RAC, lets return a waiting ticket
         ticket.status = Status.WAITING;
+        ticket.seat = null;
         if (waitingBookingsQueue.enqueue(ticket)) {
             return ticket;
         }
@@ -110,7 +111,29 @@ class SimpleBookingSystem implements BookingSystem {
 
     @Override
     public void cancel(Ticket ticket) {
-        // TODO: implement cancellation
+        // confirmed tickets cancellation handled here.
+        if (ticket.status == Status.CONFIRMED) {
+            bookings.remove(ticket.seat);
+
+            // Is there a person holding an RAC ticket?
+            Ticket ticketForPromotion = racBookingsQueue.dequeue();
+            if (ticketForPromotion != null) {
+                ticketForPromotion.seat = ticket.seat;
+                ticketForPromotion.status = Status.CONFIRMED;
+                bookings.put(ticket.seat, ticketForPromotion);
+            }
+
+            // Is there a person holding a waiting ticket?
+            Ticket waitingTicketForPromotion = waitingBookingsQueue.dequeue();
+            if (waitingTicketForPromotion != null) {
+                waitingTicketForPromotion.status = Status.RAC;
+                waitingTicketForPromotion.seat = racSeat;
+                racBookingsQueue.enqueue(waitingTicketForPromotion);
+            }
+        }
+
+        // TODO: implement cancellation of RAC and waiting
+
     }
 }
 
